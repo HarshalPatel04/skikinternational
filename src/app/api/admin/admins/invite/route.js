@@ -11,7 +11,9 @@ export async function POST(request) {
 
         if (!authorized || !user) {
             return NextResponse.json(
-                { error: "Unauthorized. Please sign in as an administrator." },
+                {
+                    error: "Unauthorized. Please sign in as an administrator.",
+                },
                 { status: 401 }
             );
         }
@@ -26,8 +28,7 @@ export async function POST(request) {
         if (!primaryAdminEmail || currentEmail !== primaryAdminEmail) {
             return NextResponse.json(
                 {
-                    error:
-                        "Only the primary administrator can send invitations.",
+                    error: "Only the primary administrator can send invitations.",
                 },
                 { status: 403 }
             );
@@ -53,8 +54,7 @@ export async function POST(request) {
         if (email === primaryAdminEmail) {
             return NextResponse.json(
                 {
-                    error:
-                        "This email belongs to the primary administrator.",
+                    error: "This email belongs to the primary administrator.",
                 },
                 { status: 400 }
             );
@@ -82,8 +82,7 @@ export async function POST(request) {
 
                 return NextResponse.json(
                     {
-                        error:
-                            "Unable to verify the account. Please try again.",
+                        error: "Unable to verify the account. Please try again.",
                     },
                     { status: 500 }
                 );
@@ -111,8 +110,7 @@ export async function POST(request) {
             );
         }
 
-        // Use the configured application URL rather than trusting
-        // the incoming request's Host header.
+        // Use the configured application URL.
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
         if (!siteUrl) {
@@ -127,44 +125,62 @@ export async function POST(request) {
             );
         }
 
-        const redirectTo = new URL(
-            "/admin/accept-invite",
-            siteUrl
-        ).toString();
+        let redirectTo;
 
-        // Send the invitation. Do not grant admin privileges here.
-        const { data, error } =
-            await serviceClient.auth.admin.inviteUserByEmail(email, {
-                redirectTo,
-            });
+        try {
+            const parsedSiteUrl = new URL(siteUrl);
 
-        // Send the invitation email.
-        const { data, error } =
-            await serviceClient.auth.admin.inviteUserByEmail(email, {
-                redirectTo,
-            });
+            if (
+                parsedSiteUrl.protocol !== "https:" &&
+                parsedSiteUrl.hostname !== "localhost"
+            ) {
+                throw new Error("Invalid application URL protocol.");
+            }
 
-        if (error || !data.user) {
-            console.error(
-                "Admin invitation failed:",
-                error?.message
-            );
+            redirectTo = new URL(
+                "/admin/accept-invite",
+                parsedSiteUrl.origin
+            ).toString();
+        } catch {
+            console.error("NEXT_PUBLIC_SITE_URL is invalid.");
 
             return NextResponse.json(
                 {
                     error:
-                        "Unable to send the invitation. Please try again.",
+                        "The invitation service is not configured correctly.",
+                },
+                { status: 500 }
+            );
+        }
+
+        // Send exactly one invitation.
+        const {
+            data: invitationData,
+            error: inviteError,
+        } = await serviceClient.auth.admin.inviteUserByEmail(email, {
+            redirectTo,
+        });
+
+        if (inviteError || !invitationData?.user) {
+            console.error(
+                "Admin invitation failed:",
+                inviteError?.message
+            );
+
+            return NextResponse.json(
+                {
+                    error: "Unable to send the invitation. Please try again.",
                 },
                 { status: 500 }
             );
         }
 
         // Record the invitation as pending.
-        // Do not grant admin privileges yet.
+        // Admin privileges are granted only after activation.
         const { error: pendingError } = await serviceClient
             .from("pending_admin_invites")
             .insert({
-                user_id: data.user.id,
+                user_id: invitationData.user.id,
                 email,
             });
 
@@ -174,10 +190,11 @@ export async function POST(request) {
                 pendingError.message
             );
 
-            // Clean up the newly created Auth account if recording
-            // the invitation failed.
+            // Remove the newly created Auth account if recording fails.
             const { error: cleanupError } =
-                await serviceClient.auth.admin.deleteUser(data.user.id);
+                await serviceClient.auth.admin.deleteUser(
+                    invitationData.user.id
+                );
 
             if (cleanupError) {
                 console.error(
@@ -202,12 +219,14 @@ export async function POST(request) {
             { status: 201 }
         );
     } catch (error) {
-        console.error("Admin invitation error:", error.message);
+        console.error(
+            "Admin invitation error:",
+            error instanceof Error ? error.message : "Unknown error"
+        );
 
         return NextResponse.json(
             {
-                error:
-                    "Unable to send the invitation. Please try again.",
+                error: "Unable to send the invitation. Please try again.",
             },
             { status: 500 }
         );
