@@ -16,6 +16,7 @@ import {
   Users,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import PostsCarousel from "@/components/home/PostsCarousel";
 
 const destinations = [
   {
@@ -259,6 +260,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* POSTS CAROUSEL */}
+      <PostsCarousel />
 
       {/* SERVICES */}
       <section className="section-padding bg-white">
