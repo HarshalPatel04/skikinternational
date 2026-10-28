@@ -130,11 +130,16 @@ export async function POST(request) {
         try {
             const parsedSiteUrl = new URL(siteUrl);
 
+            const isLocalhost = parsedSiteUrl.hostname === "localhost";
+
             if (
-                parsedSiteUrl.protocol !== "https:" &&
-                parsedSiteUrl.hostname !== "localhost"
+                (parsedSiteUrl.protocol !== "https:" && !isLocalhost) ||
+                parsedSiteUrl.username ||
+                parsedSiteUrl.password ||
+                parsedSiteUrl.search ||
+                parsedSiteUrl.hash
             ) {
-                throw new Error("Invalid application URL protocol.");
+                throw new Error("Invalid application URL.");
             }
 
             redirectTo = new URL(

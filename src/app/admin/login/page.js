@@ -37,8 +37,11 @@ export default function AdminLoginPage() {
             console.log("Login successful:", data.user?.email);
             console.log("Session received:", Boolean(data.session));
 
-            router.push("/admin");
-            router.refresh();
+            if (data.session) {
+                window.location.href = "/admin";
+            } else {
+                setError("Login completed, but no session was created.");
+            }
         } catch {
             setError("Unable to sign in. Please try again.");
         } finally {

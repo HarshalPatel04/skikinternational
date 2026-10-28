@@ -7,7 +7,6 @@ export async function GET(request) {
     const tokenHash = requestUrl.searchParams.get("token_hash");
     const type = requestUrl.searchParams.get("type");
 
-    // Only accept invitation verification through this endpoint.
     if (!tokenHash || type !== "invite") {
         return NextResponse.redirect(
             new URL(
@@ -39,14 +38,14 @@ export async function GET(request) {
             );
         }
 
-        // The server-side Supabase client stores the session in cookies.
+        // Successful verification establishes the session in cookies.
         return NextResponse.redirect(
             new URL("/admin/accept-invite", requestUrl.origin)
         );
     } catch (error) {
         console.error(
             "Invitation callback error:",
-            error.message
+            error instanceof Error ? error.message : "Unknown error"
         );
 
         return NextResponse.redirect(

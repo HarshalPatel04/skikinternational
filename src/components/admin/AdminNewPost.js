@@ -106,7 +106,29 @@ export default function AdminNewPost() {
                 body: formData,
             });
 
-            const result = await response.json();
+            const responseText = await response.text();
+
+            let result;
+
+            try {
+                result = JSON.parse(responseText);
+            } catch {
+                console.error("Upload API returned a non-JSON response:", {
+                    status: response.status,
+                    response: responseText.slice(0, 500),
+                });
+
+                throw new Error(
+                    response.status === 413
+                        ? "The file is too large for the server to process. Try a smaller file."
+                        : `Upload failed(HTTP ${response.status}).Check the browser console for details.`
+                );
+            }
+
+            if (!response.ok) {
+                throw new Error(result.error || "Unable to upload the post.");
+            }
+
 
             if (!response.ok) {
                 throw new Error(result.error || "Unable to upload the post.");

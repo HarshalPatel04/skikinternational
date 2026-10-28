@@ -59,7 +59,10 @@ export default function PostsCarousel() {
         loadPosts();
     }, [loadPosts]);
 
-    const totalPages = Math.ceil(posts.length / visibleCount);
+    const effectiveVisibleCount =
+        posts.length < 3 ? 1 : visibleCount;
+
+    const totalPages = Math.ceil(posts.length / effectiveVisibleCount);
 
     useEffect(() => {
         setCurrentPage((page) => Math.min(page, Math.max(0, totalPages - 1)));
@@ -115,8 +118,14 @@ export default function PostsCarousel() {
         return null;
     }
 
-    const startIndex = currentPage * visibleCount;
-    const visiblePosts = posts.slice(startIndex, startIndex + visibleCount);
+    const startIndex = currentPage * effectiveVisibleCount;
+
+    const visiblePosts = posts.slice(
+        startIndex,
+        startIndex + effectiveVisibleCount
+    );
+
+    const useCarousel = posts.length < 3;
 
     return (
         <section className="mt-20 overflow-hidden bg-white">
@@ -166,97 +175,102 @@ export default function PostsCarousel() {
 
                 <div
                     key={currentPage}
-                    className="skik-carousel-page grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-                >                    {visiblePosts.map((post) => (
-                    <article
-                        key={post.id}
-                        className="group min-w-0 overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                    >
-                        <div
-                            className="relative aspect-[4/5] overflow-hidden bg-slate-100"
-                            onMouseEnter={(event) => {
-                                if (post.media_type === "video") {
-                                    handleVideoHover(
-                                        post.id,
-                                        event.currentTarget.querySelector("video"),
-                                        true
-                                    );
-                                }
-                            }}
-                            onMouseLeave={(event) => {
-                                if (post.media_type === "video") {
-                                    handleVideoHover(
-                                        post.id,
-                                        event.currentTarget.querySelector("video"),
-                                        false
-                                    );
-                                }
-                            }}
+                    className={
+                        useCarousel
+                            ? "skik-carousel-page mx-auto grid w-full max-w-md grid-cols-1 gap-9"
+                            : "skik-carousel-page grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+                    }
+                >
+                    {visiblePosts.map((post) => (
+                        <article
+                            key={post.id}
+                            className="group min-w-0 overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
                         >
-                            {post.media_type === "video" ? (
-                                <>
-                                    <video
-                                        className="skik-post-video h-full w-full object-cover"
-                                        src={post.media_url}
-                                        poster={post.thumbnail_url || undefined}
-                                        muted
-                                        loop
-                                        playsInline
-                                        preload="metadata"
-                                        onClick={(event) => {
-                                            event.stopPropagation();
-                                            playVideo(post.id, event.currentTarget);
-                                        }}
-                                    />
-
-                                    {playingVideo !== post.id && (
-                                        <button
-                                            type="button"
+                            <div
+                                className="relative aspect-[4/5] overflow-hidden bg-slate-100"
+                                onMouseEnter={(event) => {
+                                    if (post.media_type === "video") {
+                                        handleVideoHover(
+                                            post.id,
+                                            event.currentTarget.querySelector("video"),
+                                            true
+                                        );
+                                    }
+                                }}
+                                onMouseLeave={(event) => {
+                                    if (post.media_type === "video") {
+                                        handleVideoHover(
+                                            post.id,
+                                            event.currentTarget.querySelector("video"),
+                                            false
+                                        );
+                                    }
+                                }}
+                            >
+                                {post.media_type === "video" ? (
+                                    <>
+                                        <video
+                                            className="skik-post-video h-full w-full object-cover"
+                                            src={post.media_url}
+                                            poster={post.thumbnail_url || undefined}
+                                            muted
+                                            loop
+                                            playsInline
+                                            preload="metadata"
                                             onClick={(event) => {
                                                 event.stopPropagation();
-                                                playVideo(
-                                                    post.id,
-                                                    event.currentTarget.parentElement.querySelector("video")
-                                                );
+                                                playVideo(post.id, event.currentTarget);
                                             }}
-                                            aria-label="Play video"
-                                            className="absolute inset-0 flex items-center justify-center bg-navy/10 transition group-hover:bg-navy/20"
-                                        >
-                                            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/70 bg-navy/70 text-white shadow-lg backdrop-blur-sm transition group-hover:scale-110">
-                                                <Play size={23} fill="currentColor" />
-                                            </span>
-                                        </button>
-                                    )}
+                                        />
 
-                                    <span className="absolute right-3 top-3 rounded-full bg-navy/75 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                                        Video
-                                    </span>
-                                </>
-                            ) : (
-                                <>
-                                    <img
-                                        src={post.media_url}
-                                        alt={post.caption || "SKIK International update"}
-                                        loading="lazy"
-                                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                    />
+                                        {playingVideo !== post.id && (
+                                            <button
+                                                type="button"
+                                                onClick={(event) => {
+                                                    event.stopPropagation();
+                                                    playVideo(
+                                                        post.id,
+                                                        event.currentTarget.parentElement.querySelector("video")
+                                                    );
+                                                }}
+                                                aria-label="Play video"
+                                                className="absolute inset-0 flex items-center justify-center bg-navy/10 transition group-hover:bg-navy/20"
+                                            >
+                                                <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/70 bg-navy/70 text-white shadow-lg backdrop-blur-sm transition group-hover:scale-110">
+                                                    <Play size={23} fill="currentColor" />
+                                                </span>
+                                            </button>
+                                        )}
 
-                                    <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-navy/75 text-white backdrop-blur-sm">
-                                        <ImageIcon size={17} />
-                                    </span>
-                                </>
-                            )}
-                        </div>
+                                        <span className="absolute right-3 top-3 rounded-full bg-navy/75 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                                            Video
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img
+                                            src={post.media_url}
+                                            alt={post.caption || "SKIK International update"}
+                                            loading="lazy"
+                                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        />
 
-                        {post.caption?.trim() && (
-                            <div className="p-4">
-                                <p className="whitespace-pre-line break-words text-sm leading-6 text-slate-700">
-                                    {post.caption}
-                                </p>
+                                        <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-navy/75 text-white backdrop-blur-sm">
+                                            <ImageIcon size={17} />
+                                        </span>
+                                    </>
+                                )}
                             </div>
-                        )}
-                    </article>
-                ))}
+
+                            {post.caption?.trim() && (
+                                <div className="p-4">
+                                    <p className="whitespace-pre-line break-words text-sm leading-6 text-slate-700">
+                                        {post.caption}
+                                    </p>
+                                </div>
+                            )}
+                        </article>
+                    ))}
                 </div>
 
                 {totalPages > 1 && (
