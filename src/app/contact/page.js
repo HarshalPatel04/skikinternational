@@ -357,7 +357,7 @@ export default function ContactPage() {
 
                             <button
                                 type="submit"
-                                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold text-white transition hover:bg-brand-blue"
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold text-white transition hover:bg-[#86C33C]"
                             >
                                 Submit Your Inquiry
                                 <ArrowRight size={18} />
