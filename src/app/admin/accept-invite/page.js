@@ -27,9 +27,19 @@ export default function AcceptInvitePage() {
 
         async function checkInvitationSession() {
             try {
-                // Read the invitation session tokens from the URL fragment.
+                // Supabase may return an error in the URL fragment.
                 const hash = window.location.hash.substring(1);
                 const params = new URLSearchParams(hash);
+
+                const authError =
+                    params.get("error_description") ||
+                    params.get("error");
+
+                if (authError) {
+                    throw new Error(
+                        authError.replace(/\+/g, " ")
+                    );
+                }
 
                 const accessToken = params.get("access_token");
                 const refreshToken = params.get("refresh_token");
@@ -46,7 +56,7 @@ export default function AcceptInvitePage() {
                         throw sessionError;
                     }
 
-                    // Remove sensitive tokens from the visible URL.
+                    // Remove authentication tokens from the visible URL.
                     window.history.replaceState(
                         null,
                         "",
@@ -63,25 +73,31 @@ export default function AcceptInvitePage() {
 
                 if (userError || !user) {
                     setError(
-                        "Your invitation session is missing or expired. Please open the invitation email again."
+                        "Your invitation session is missing or expired. Request a new invitation email and open its latest link."
                     );
                     setChecking(false);
                     return;
                 }
 
                 setEmail(user.email || "");
+                setError("");
                 setChecking(false);
             } catch (error) {
                 console.error(
-                    "Invitation session error:",
-                    error instanceof Error ? error.message : "Unknown error"
+                    "Invitation verification failed:",
+                    error instanceof Error
+                        ? error.message
+                        : "Unknown error"
                 );
 
                 if (!active) return;
 
                 setError(
-                    "Unable to verify your invitation. Please open the invitation email again."
+                    error instanceof Error
+                        ? error.message
+                        : "Unable to verify the invitation. Request a new invitation email."
                 );
+
                 setChecking(false);
             }
         }

@@ -7,6 +7,7 @@ import Footer from "./Footer";
 export default function SiteLayout({ children }) {
     const pathname = usePathname();
     const isAdminPage = pathname.startsWith("/admin");
+    const WHATSAPP = "https://wa.me/918000576969";
 
     // Keep admin pages separate from the public website layout.
     if (isAdminPage) {
@@ -21,7 +22,9 @@ export default function SiteLayout({ children }) {
 
             {/* FLOATING WHATSAPP */}
             <a
-                href="https://wa.me/918000576969"
+                href={`${WHATSAPP}?text=${encodeURIComponent(
+                    `Hello SKIK International, I would like to discuss my plans for Abroad.`
+                )}`}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Chat with Skik International on WhatsApp"

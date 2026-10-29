@@ -27,6 +27,8 @@ const destinations = [
     "Other Destination",
 ];
 
+const WHATSAPP = "https://wa.me/918000576969";
+
 export default function ContactPage() {
     return (
         <main className="bg-white text-navy">
@@ -60,7 +62,9 @@ export default function ContactPage() {
                                 planning, and let&apos;s discuss your options.
                             </p>
                             <a
-                                href="https://wa.me/918000576969"
+                                href={`${WHATSAPP}?text=${encodeURIComponent(
+                                    `Hello SKIK International, I would like to discuss my plans for Abroad.`
+                                )}`}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="whatsapp-cta mt-6 inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-5 py-3.5 font-bold transition hover:bg-white"
