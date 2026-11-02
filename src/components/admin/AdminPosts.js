@@ -235,7 +235,7 @@ export default function AdminPosts() {
 
                     <Link
                         href="/admin/posts/new"
-                        className="inline-flex items-center gap-2 rounded-xl bg-[#243d67] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#172b4d]"
+                        className="addnewpost inline-flex items-center gap-2 rounded-xl bg-[#243d67] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#172b4d]"
                     >
                         <Plus size={18} />
                         Add New Post

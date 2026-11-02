@@ -252,7 +252,7 @@ export default function PostsCarousel() {
                                             src={post.media_url}
                                             alt={post.caption || "SKIK International update"}
                                             loading="lazy"
-                                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                            className="h-full w-full object-fill transition duration-500 group-hover:scale-105"
                                         />
 
                                         <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-navy/75 text-white backdrop-blur-sm">

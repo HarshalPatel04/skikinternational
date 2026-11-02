@@ -341,8 +341,7 @@ export default function AboutPage() {
                     </div>
 
                     <p className="mt-4 text-xs leading-6 text-muted">
-                        *Figures supplied in the project brief. Confirm and
-                        approve all figures before publishing the website.
+                        * Visit your nearest branch for more information.
                     </p>
                 </div>
             </section>

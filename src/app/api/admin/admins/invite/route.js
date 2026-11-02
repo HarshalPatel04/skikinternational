@@ -174,7 +174,7 @@ export async function POST(request) {
 
             return NextResponse.json(
                 {
-                    error: "Unable to send the invitation. Please try again.",
+                    error: "You can only send 2 invite per day.",
                 },
                 { status: 500 }
             );

@@ -78,7 +78,8 @@ export default function AdminInviteForm() {
             {message && (
                 <p
                     role="status"
-                    className={`mt - 4 rounded - lg p - 3 text - sm ${error
+                    className={`mt-4 rounded-lg p-3 text-sm 
+                        ${error
                             ? "bg-red-50 text-red-700"
                             : "bg-emerald-50 text-emerald-700"
                         } `}

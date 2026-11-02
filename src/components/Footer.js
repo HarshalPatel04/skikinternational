@@ -246,8 +246,28 @@ export default function Footer() {
                                     className="h-5 w-5 brightness-0 invert"
                                 />
                             </a>
+
+                            <div className="block md:hidden">
+                                <Link
+                                    href="https://www.linkedin.com/in/harshalpatel-nov4/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="harshal text-2xl ml-10 cursor-default"
+                                >
+                                    Harshal Patel
+                                </Link>
+                            </div>
                         </div>
                     </div>
+
+                    <Link
+                        href="https://www.linkedin.com/in/harshalpatel-nov4/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="harshal hidden md:block text-2xl md:ml-222 w-full cursor-default"
+                    >
+                        Harshal Patel
+                    </Link>
 
                 </div>
 

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import {
     ArrowRight,
@@ -202,7 +201,7 @@ export default function ContactPage() {
                         </div>
 
                         <form
-                            action="https://formsubmit.co/Skikinternational@gmail.com"
+                            action="https://formsubmit.co/hp2726975@gmail.com"
                             method="POST"
                             className="space-y-5"
                         >
