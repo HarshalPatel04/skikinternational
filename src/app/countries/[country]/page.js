@@ -698,7 +698,7 @@ export default async function CountryPage({ params }) {
             ===================================================== */}
 
 
-            <section className="overflow-hidden bg-white px-5 py-5 sm:px-8 sm:py-22 lg:px-10">
+            <section className="overflow-hidden bg-green-50 px-5 py-5 sm:px-8 sm:py-22 lg:px-10">
                 <div className="mx-auto max-w-7xl">
 
                     {/* SECTION HEADER */}
@@ -821,7 +821,7 @@ export default async function CountryPage({ params }) {
                 id="pathways"
                 className="px-5 sm:px-8 sm:pb-20 lg:px-10"
             >
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl py-20">
                     <div className="mx-auto max-w-3xl text-center">
                         <p className="section-label justify-center">
                             <span className="h-px w-7 bg-[#86C33C]" />
@@ -991,7 +991,7 @@ export default async function CountryPage({ params }) {
                                 )}`}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="navy-cta inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold transition hover:bg-brand-blue"
+                                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold !text-green-400 transition hover:bg-brand-blue"
                             >
                                 <MessageCircle size={19} />
                                 WhatsApp Us

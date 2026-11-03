@@ -19,7 +19,7 @@
   --color-brand-blue: #2457a7;
   --color-brand-gold: #d9ad65;
   --color-background: #ffffff;
-  --color-surface: #f5f7fb;
+  --color-surface: #DBEAFE;
   --color-foreground: #182538;
   --color-muted: #65748b;
   --color-border: #e3e8ef;
@@ -158,7 +158,6 @@ button {
 ========================================= */
 
 .branches-section {
-    background: #f7f9fc;
     color: #10223e;
 }
 
@@ -227,7 +226,7 @@ button {
     padding: 30px 26px;
     border: 1px solid #e2e8f0;
     border-radius: 18px;
-    background: #fff;
+    background: #DBEAFE;
     transition:
         transform 250ms ease,
         box-shadow 250ms ease,
@@ -273,7 +272,7 @@ button {
 
 .branch-card h3 {
     margin: 0;
-    color: #10223e;
+    color: #2458a6;
     font-size: 27px;
     font-weight: 750;
     letter-spacing: -0.7px;

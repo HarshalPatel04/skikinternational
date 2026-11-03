@@ -15,7 +15,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar"; 
 import PostsCarousel from "@/components/home/PostsCarousel";
 
 const destinations = [
@@ -98,7 +98,7 @@ export default function Home() {
 
         <div className="container-width relative grid min-h-[620px] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
           <div className="max-w-2xl">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-blue-100">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-green-50/5 px-4 py-2 text-xs font-semibold tracking-wide text-blue-100">
               <span className="h-2 w-2 rounded-full bg-[#86C33C]" />
               YOUR JOURNEY. YOUR FUTURE. YOUR WORLD.
             </div>
@@ -121,7 +121,7 @@ export default function Home() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold text-navy transition-colors duration-300 hover:bg-white hover:!text-navy"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold text-navy transition-colors duration-300 hover:bg-green-50 hover:!text-navy"
               >
                 Start Your Journey
                 <ArrowRight size={18} />
@@ -129,7 +129,7 @@ export default function Home() {
 
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-4 font-semibold text-white transition hover:bg-green-50/10"
               >
                 Explore Services
               </Link>
@@ -150,7 +150,7 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-[540px]">
             <div className="absolute -inset-5 rounded-[35px] bg-brand-blue/20 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-2">
+            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-green-50/5 p-2">
               <div className="relative h-[370px] overflow-hidden rounded-xl sm:h-[450px]">
                 <Image
                   src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=90" alt="University students on campus"
@@ -175,7 +175,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute -bottom-12 -left-3 flex items-center gap-3 rounded-xl border border-border bg-white p-4 text-navy shadow-xl sm:-left-8">
+            <div className="absolute -bottom-12 -left-3 flex items-center gap-3 rounded-xl border border-border bg-green-50 p-4 text-navy shadow-xl sm:-left-8">
               <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface">
                 <GraduationCap size={24} className="text-brand-blue" />
               </div>
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* STATISTICS */}
-      <section className="border-b border-border bg-white">
+      <section className="border-b border-border bg-green-50">
         <div className="container-width grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {stats.map((stat) => (
             <div key={stat.label} className="px-5 py-7 text-center">
@@ -233,7 +233,7 @@ export default function Home() {
               <Link
                 key={destination.code}
                 href={`/countries/${destination.code}`}
-                className="group overflow-hidden rounded-xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group overflow-hidden rounded-xl border border-border bg-green-50 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative h-60 overflow-hidden">
                   <Image
@@ -265,7 +265,7 @@ export default function Home() {
       <PostsCarousel />
 
       {/* SERVICES */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-surface">
         <div className="container-width">
           <div className="mx-auto max-w-2xl text-center">
             <span className="section-label">How we help</span>
@@ -286,7 +286,7 @@ export default function Home() {
               return (
                 <div
                   key={service.number}
-                  className="group rounded-xl border border-border bg-white p-6 transition duration-300 hover:border-navy/20 hover:shadow-xl"
+                  className="group rounded-xl border border-border bg-green-50 p-6 transition duration-300 hover:border-navy/20 hover:shadow-xl"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface text-brand-blue transition group-hover:bg-navy group-hover:text-white">
@@ -360,7 +360,7 @@ export default function Home() {
 
                 return (
                   <div key={item.title} className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#86C33C]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-50/10 text-[#86C33C]">
                       <Icon size={20} />
                     </div>
                     <div>
@@ -416,7 +416,7 @@ export default function Home() {
       {/* CTA */}
       <section className="section-padding bg-surface">
         <div className="container-width">
-          <div className="relative overflow-hidden rounded-2xl bg-white px-6 py-12 shadow-sm sm:px-12 sm:py-14 lg:px-16">
+          <div className="relative overflow-hidden rounded-2xl bg-green-50 px-6 py-12 shadow-sm sm:px-12 sm:py-14 lg:px-16">
             <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-blue-100/60 blur-3xl" />
             <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
@@ -445,7 +445,7 @@ export default function Home() {
                   href="https://wa.me/918000576969"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-4 font-bold text-navy transition hover:bg-surface"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-4 font-bold text-navy transition bg-green-400 hover:bg-surface"
                 >
                   <MessageCircle size={18} /> WhatsApp Us
                 </a>

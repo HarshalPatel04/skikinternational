@@ -128,7 +128,7 @@ export default function PostsCarousel() {
     const useCarousel = posts.length < 3;
 
     return (
-        <section className="mt-20 overflow-hidden bg-white">
+        <section className="py-20 overflow-hidden bg-green-50">
             <div className="container-width">
                 <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                     <div>

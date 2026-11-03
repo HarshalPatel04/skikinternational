@@ -127,7 +127,7 @@ const supportSteps = [
 
 export default function CountriesPage() {
     return (
-        <main className="overflow-hidden bg-white text-navy">
+        <main className="overflow-hidden bg-green-50 text-navy">
             {/* HERO */}
 
             <section className="relative overflow-hidden bg-navy px-5 py-16 text-white sm:py-20 lg:py-20">
@@ -161,7 +161,7 @@ export default function CountriesPage() {
                         <div className="mt-8 flex flex-wrap gap-4">
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors hover:bg-white"
+                                className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors hover:bg-green-50"
                             >
                                 Explore Your Options
                                 <ArrowRight size={18} />
@@ -171,7 +171,7 @@ export default function CountriesPage() {
                                 href="https://wa.me/918000576969"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-4 font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+                                className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-4 font-semibold text-white transition-colors hover:border-white hover:bg-green-50/10"
                             >
                                 <MessageCircle size={18} />
                                 Talk to Our Team
@@ -220,7 +220,7 @@ export default function CountriesPage() {
                                 </p>
 
                                 <h2 className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
-                                    Big dreams deservede
+                                    Big dreams deserves
                                     <br className="hidden sm:block" /> the right guidance.
                                 </h2>
 
@@ -276,7 +276,7 @@ export default function CountriesPage() {
                             return (
                                 <article
                                     key={service.number}
-                                    className="group flex min-h-[330px] flex-col rounded-2xl border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-xl hover:shadow-navy/5 sm:p-7"
+                                    className="group flex min-h-[330px] flex-col rounded-2xl border border-border bg-green-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-xl hover:shadow-navy/5 sm:p-7"
                                 >
                                     <div className="flex items-start justify-between">
                                         <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-surface text-brand-blue transition-colors group-hover:bg-navy group-hover:text-white">
@@ -350,7 +350,7 @@ export default function CountriesPage() {
                             <Link
                                 key={country.slug}
                                 href={`/countries/${country.slug}`}
-                                className={`group overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 sm:col-span-1 lg:col-span-2 ${index === 3
+                                className={`group overflow-hidden rounded-2xl border border-border bg-blue-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/10 sm:col-span-1 lg:col-span-2 ${index === 3
                                         ? "lg:col-start-2"
                                         : index === 4
                                             ? "lg:col-start-4"
@@ -419,7 +419,7 @@ export default function CountriesPage() {
                             return (
                                 <article
                                     key={step.number}
-                                    className="rounded-2xl border border-border bg-white p-7 sm:p-8"
+                                    className="rounded-2xl border border-border bg-green-50 p-7 sm:p-8"
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface text-brand-blue">
@@ -466,7 +466,7 @@ export default function CountriesPage() {
                     <div className="flex shrink-0 flex-wrap gap-3">
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors hover:bg-white"
+                            className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors hover:bg-green-50"
                         >
                             Book a Consultation
                             <ArrowRight size={18} />
@@ -476,7 +476,7 @@ export default function CountriesPage() {
                             href="https://wa.me/918000576969"
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-5 py-4 font-semibold text-white transition-colors hover:bg-white/10"
+                            className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-5 py-4 font-semibold !text-green-400 transition-colors hover:bg-green-50/10"
                         >
                             <MessageCircle size={18} />
                             WhatsApp

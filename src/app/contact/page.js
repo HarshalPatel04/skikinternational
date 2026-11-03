@@ -78,7 +78,7 @@ export default function ContactPage() {
             </section>
 
             {/* CONTACT INFORMATION + FORM */}
-            <section className="bg-slate-50 px-5 py-16 sm:px-8 lg:py-14">
+            <section className="bg-green-50 px-5 py-16 sm:px-8 lg:py-14">
                 <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
 
                     {/* LEFT: CONTACT DETAILS */}
@@ -112,7 +112,7 @@ export default function ContactPage() {
                                         Call us
                                     </span>
                                     <span className="mt-1 block font-bold">
-                                        80005 76969
+                                        +91 80005 76969
                                     </span>
                                     <span className="mt-1 block text-sm text-brand-blue">
                                         Speak with our team

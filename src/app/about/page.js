@@ -68,7 +68,7 @@ export default function AboutPage() {
             {/* COMPANY INTRODUCTION */}
 
             {/* 01 — WHO WE ARE */}
-            <section className="bg-white px-5 py-20 sm:py-14">
+            <section className="bg-green-50 px-5 py-20 sm:py-14">
                 <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
                     <div>
                         <p className="section-label">Who we are</p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
             {/* 02 — VISA GUIDANCE */}
             <section className="bg-surface px-5 py-20 sm:py-14">
                 <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                    <div className="order-2 overflow-hidden rounded-2xl bg-white p-3 lg:order-1">
+                    <div className="order-2 overflow-hidden rounded-2xl bg-green-50 p-3 lg:order-1">
                         <img
                             src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
                             alt="Consultants discussing plans and documents"
@@ -176,7 +176,7 @@ export default function AboutPage() {
             </section>
 
             {/* 03 — LANGUAGE & PREPARATION */}
-            <section className="bg-white px-5 py-20 sm:py-14">
+            <section className="bg-green-50 px-5 py-20 sm:py-14">
                 <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
                     <div>
                         <p className="section-label">Language & preparation</p>
@@ -234,7 +234,7 @@ export default function AboutPage() {
             {/* 04 — OUR APPROACH */}
             <section className="bg-navy px-5 py-20 text-white sm:py-14">
                 <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                    <div className="order-2 rounded-2xl bg-white/5 p-3 lg:order-1">
+                    <div className="order-2 rounded-2xl bg-green-50/5 p-3 lg:order-1">
                         <img
                             src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200"
                             alt="Professionals working together in a consultation"
@@ -292,7 +292,7 @@ export default function AboutPage() {
 
                         <Link
                             href="/contact"
-                            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors duration-300 hover:bg-white hover:!text-[#86C33C]"                        >
+                            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold !text-navy transition-colors duration-300 hover:bg-green-50 hover:!text-[#86C33C]"                        >
                             Start Your Journey
                             <ArrowRight size={18} />
                         </Link>
@@ -328,7 +328,7 @@ export default function AboutPage() {
                         ].map((stat) => (
                             <div
                                 key={stat.label}
-                                className="rounded-2xl border border-border bg-white p-8 text-center"
+                                className="rounded-2xl border border-border bg-green-100 p-8 text-center"
                             >
                                 <p className="font-heading text-4xl font-bold text-navy">
                                     {stat.value}
@@ -347,7 +347,7 @@ export default function AboutPage() {
             </section>
 
             {/* OUR APPROACH */}
-            <section className="bg-white px-5 py-20 sm:py-14">
+            <section className="bg-green-50 px-5 py-20 sm:py-14">
                 <div className="mx-auto max-w-7xl">
                     <div className="max-w-2xl">
                         <p className="section-label">The SKIK difference</p>
@@ -426,15 +426,15 @@ export default function AboutPage() {
                         ].map((person) => (
                             <div
                                 key={person.name}
-                                className="group relative overflow-hidden rounded-2xl border border-border bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:p-10"
+                                className="group relative overflow-hidden rounded-2xl border border-border bg-navy p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:p-10"
                             >
                                 {/* Decorative background number */}
-                                <span className="pointer-events-none absolute right-7 top-5 font-heading text-6xl font-bold text-slate-100 transition-colors duration-300 group-hover:text-blue-50">
+                                <span className="pointer-events-none absolute right-7 top-5 font-heading text-6xl font-bold text-slate-100 transition-colors duration-300 group-hover:text-green-300">
                                     {person.number}
                                 </span>
 
                                 {/* Initials badge */}
-                                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-navy text-lg font-bold tracking-wide text-white transition-colors duration-300 group-hover:bg-brand-blue">
+                                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-green-200 text-lg font-bold tracking-wide text-blue-navy transition-colors duration-300 group-hover:bg-brand-blue">
                                     {person.initials}
                                 </div>
 
@@ -444,7 +444,7 @@ export default function AboutPage() {
                                         {person.role}
                                     </p>
 
-                                    <h3 className="mt-2 font-heading text-2xl font-bold text-navy md:text-3xl">
+                                    <h3 className="mt-2 font-heading text-2xl font-bold text-[#86C33C] md:text-3xl">
                                         {person.name}
                                     </h3>
 
@@ -464,7 +464,7 @@ export default function AboutPage() {
             </section>
 
             {/* OUR BRANCHES */}
-            <section className="branches-section pt-10 pb-20">
+            <section className="branches-section bg-white pt-10 pb-20">
                 <div className="branches-container">
 
                     <div className="branches-heading">
@@ -512,7 +512,7 @@ export default function AboutPage() {
                         <article className="branch-card">
                             <div className="branch-number">02</div>
                             <div className="branch-icon">A</div>
-                            <h3>Ahmedabad</h3>
+                            <h3 className="text-[#86C33C]">Ahmedabad</h3>
                             <p>
                                 Get support in exploring suitable courses,
                                 destinations, and application requirements.

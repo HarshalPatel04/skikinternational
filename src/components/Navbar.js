@@ -25,7 +25,7 @@ export default function Navbar() {
     const [countriesOpen, setCountriesOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-border bg-green-50/95 backdrop-blur-xl">
             <div className="container-width flex h-[78px] items-center justify-between gap-6">
 
                 <Link href="/" className="flex shrink-0 items-center gap-3">
@@ -84,7 +84,7 @@ export default function Navbar() {
                                 : "invisible translate-y-2 opacity-0 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
                                 }`}
                         >
-                            <div className="rounded-xl border border-border bg-white p-2 shadow-xl">
+                            <div className="rounded-xl border border-border bg-green-50 p-2 shadow-xl">
                                 {[
                                     { name: "United Kingdom", slug: "uk" },
                                     { name: "United States", slug: "usa" },
@@ -126,7 +126,7 @@ export default function Navbar() {
                         className="flex items-center gap-2 text-sm font-semibold text-navy"
                     >
                         <Phone size={16} />
-                        80005 76969
+                        +91 80005 76969
                     </a>
 
                     <Link
@@ -151,7 +151,7 @@ export default function Navbar() {
             </div>
 
             {open && (
-                <nav className="border-t border-border bg-white px-5 py-5 lg:hidden">
+                <nav className="border-t border-border bg-green-50 px-5 py-5 lg:hidden">
                     <div className="container-width flex flex-col gap-1">
                         {[
                             ["Home", "/"],
@@ -174,7 +174,7 @@ export default function Navbar() {
                             href="tel:8000576969"
                             className="navy-white-button mt-3 rounded-lg bg-navy px-4 py-3 text-center font-semibold"
                         >
-                            Call Us: 80005 76969
+                            Call Us: +91 80005 76969
                         </a>
                     </div>
                 </nav>

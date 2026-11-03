@@ -160,18 +160,16 @@ export default function Footer() {
                     </div>
 
                     <div>
-
                         <h3 className="font-bold">Get in touch</h3>
 
                         <div className="mt-5 space-y-5 text-sm leading-6 text-slate-300">
-
 
                             <a
                                 href="tel:8000576969"
                                 className="flex items-center gap-3 transition hover:text-[#86C33C]"
                             >
                                 <Phone size={17} className="text-[#86C33C]" />
-                                80005 76969
+                                +91 80005 76969
                             </a>
 
                             <a

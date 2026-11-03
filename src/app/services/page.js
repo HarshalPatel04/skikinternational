@@ -175,7 +175,7 @@ export default function ServicesPage() {
             </section>
 
             {/* DESTINATIONS */}
-            <section className="bg-white px-5 py-16 sm:py-20">
+            <section className="bg-green-50 px-5 py-16 sm:py-20">
                 <div className="mx-auto max-w-7xl">
                     <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                         <div>

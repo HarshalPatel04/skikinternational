@@ -289,7 +289,7 @@ export default function AcceptInvitePage() {
                                 {message && (
                                     <div
                                         role="status"
-                                        className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm leading-6 text-green-700"
+                                        className="rounded-xl border border-green-200 bg-white px-4 py-3 text-sm leading-6 text-green-700"
                                     >
                                         {message}
                                     </div>
