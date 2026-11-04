@@ -192,7 +192,7 @@ export default function Home() {
 
       {/* STATISTICS */}
       <section className="border-b border-border bg-green-50">
-        <div className="container-width grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <div className="container-width pt-3 grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {stats.map((stat) => (
             <div key={stat.label} className="px-5 py-7 text-center">
               <p className="font-heading text-3xl font-extrabold text-navy">
@@ -203,7 +203,7 @@ export default function Home() {
           ))}
         </div>
         <p className="container-width pb-3 text-right text-[10px] text-muted">
-          *Visa approval figure supplied in project notes; confirm before launch.
+          *Visa approval figure supplied in countries page; confirm with team.
         </p>
       </section>
 

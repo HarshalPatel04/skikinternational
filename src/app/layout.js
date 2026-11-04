@@ -7,7 +7,7 @@ export const metadata = {
     template: "%s | Skik International",
   },
   description:
-    "Explore international education opportunities, visa guidance, IELTS and PTE coaching with Skik International in Surat, Gujarat.",
+    "Explore international education opportunities, visa guidance, IELTS and PTE coaching with Skik International in Gujarat.",
 };
 
 export default function RootLayout({ children }) {

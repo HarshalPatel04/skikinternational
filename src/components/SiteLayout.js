@@ -33,7 +33,7 @@ export default function SiteLayout({ children }) {
                 <img
                     src="/whatsapp.png"
                     alt="WhatsApp Icon"
-                    className="h-13 w-13"
+                    className="h-auto w-13"
                 />
             </a>
         </>
