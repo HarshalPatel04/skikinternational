@@ -12,6 +12,7 @@ import {
     LogOut,
     Menu,
     X,
+    Inbox,
 } from "lucide-react";
 
 export default function AdminDashboard({ email }) {
@@ -20,6 +21,7 @@ export default function AdminDashboard({ email }) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [loggingOut, setLoggingOut] = useState(false);
+    const [hasNewInquiries, setHasNewInquiries] = useState(false);
 
     const [stats, setStats] = useState({
         total: null,
@@ -83,6 +85,43 @@ export default function AdminDashboard({ email }) {
         };
     }, []);
 
+    useEffect(() => {
+        let isMounted = true;
+
+        async function checkNewInquiries() {
+            try {
+                const response = await fetch("/api/admin/inquiries", {
+                    cache: "no-store",
+                });
+
+                if (!response.ok) {
+                    throw new Error("Unable to check inquiries");
+                }
+
+                const result = await response.json();
+
+                if (isMounted && result.success) {
+                    const hasNew = result.inquiries?.some(
+                        (inquiry) => !inquiry.is_reviewed
+                    );
+
+                    setHasNewInquiries(Boolean(hasNew));
+                }
+            } catch (error) {
+                console.error("Unable to check new inquiries:", error);
+            }
+        }
+
+        checkNewInquiries();
+
+        const interval = setInterval(checkNewInquiries, 15000);
+
+        return () => {
+            isMounted = false;
+            clearInterval(interval);
+        };
+    }, []);
+
     async function handleLogout() {
         setLoggingOut(true);
 
@@ -117,6 +156,11 @@ export default function AdminDashboard({ email }) {
             label: "Add New Post",
             icon: ImagePlus,
             href: "/admin/posts/new",
+        },
+        {
+            label: "Inquiries",
+            icon: Inbox,
+            href: "/admin/inquiries",
         },
         {
             label: "Settings",
@@ -176,19 +220,27 @@ export default function AdminDashboard({ email }) {
                         {menuItems.map((item) => {
                             const Icon = item.icon;
                             const active = pathname === item.href;
+                            const isNewInquiry =
+                                item.href === "/admin/inquiries" && hasNewInquiries;
 
                             return (
                                 <Link
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => setMenuOpen(false)}
-                                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${active
-                                        ? "admin-sidebar-link-active bg-[#101d36]"
-                                        : "text-slate-600 hover:bg-slate-100 hover:text-[#101d36]"
+                                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${isNewInquiry
+                                        ? "bg-[#EAF7DF] text-[#477B24] hover:bg-[#DDF0CE]"
+                                        : active
+                                            ? "admin-sidebar-link-active bg-[#101d36] text-white"
+                                            : "text-slate-600 hover:bg-slate-100 hover:text-[#101d36]"
                                         }`}
                                 >
                                     <Icon size={19} />
                                     {item.label}
+
+                                    {isNewInquiry && (
+                                        <span className="ml-auto h-2.5 w-2.5 rounded-full bg-[#86C33C]" />
+                                    )}
                                 </Link>
                             );
                         })}

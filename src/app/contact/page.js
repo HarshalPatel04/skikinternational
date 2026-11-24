@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
 import {
     ArrowRight,
     ArrowUpRight,
@@ -29,6 +30,60 @@ const destinations = [
 const WHATSAPP = "https://wa.me/918000576969";
 
 export default function ContactPage() {
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        setIsSubmitting(true);
+        setSubmitMessage("");
+
+        try {
+            // 1. Save inquiry in Supabase through our API
+            const response = await fetch("/api/admin/inquiries", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fullName: formData.get("Full Name"),
+                    phone: formData.get("Phone"),
+                    email: formData.get("Email"),
+                    service: formData.get("Service"),
+                    destination: formData.get("Preferred Destination"),
+                    message: formData.get("Message"),
+                }),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.error || "Unable to save your inquiry.");
+            }
+
+            // 2. Submit the same form to FormSubmit for email delivery
+            form.submit();
+
+            setSubmitMessage(
+                "Thank you! Your inquiry has been submitted successfully."
+            );
+
+            form.reset();
+        } catch (error) {
+            console.error("Inquiry submission error:", error);
+            setSubmitMessage(
+                "Something went wrong. Please try again."
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <main className="bg-white text-navy">
             {/* HERO */}
@@ -203,6 +258,8 @@ export default function ContactPage() {
                         <form
                             action="https://formsubmit.co/hp2726975@gmail.com"
                             method="POST"
+                            target="formsubmit-frame"
+                            onSubmit={handleSubmit}
                             className="space-y-5"
                         >
                             <input
@@ -356,16 +413,36 @@ export default function ContactPage() {
 
                             <button
                                 type="submit"
-                                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold text-white transition hover:bg-[#86C33C]"
+                                disabled={isSubmitting}
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-navy px-6 py-4 font-bold text-white transition hover:bg-[#86C33C] disabled:cursor-not-allowed disabled:opacity-60"
                             >
-                                Submit Your Inquiry
-                                <ArrowRight size={18} />
+                                {isSubmitting ? "Submitting..." : "Submit Your Inquiry"}
+                                {!isSubmitting && <ArrowRight size={18} />}
                             </button>
+
+                            {submitMessage && (
+                                <p
+                                    role="status"
+                                    className={`text-center text-sm ${submitMessage.startsWith("Thank")
+                                        ? "text-green-600"
+                                        : "text-red-600"
+                                        }`}
+                                >
+                                    {submitMessage}
+                                </p>
+                            )}
 
                             <p className="text-center text-xs leading-5 text-slate-500">
                                 Your details will be used to respond to your inquiry.
                             </p>
                         </form>
+
+                        <iframe
+                            name="formsubmit-frame"
+                            title="Form submission"
+                            className="hidden"
+                        />
+
                     </div>
                 </div>
             </section>
