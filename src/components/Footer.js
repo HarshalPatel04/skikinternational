@@ -12,7 +12,7 @@ const services = [
 export default function Footer() {
     return (
         <footer className="bg-[#07182D] text-white">
-            <div className="mx-auto max-w-[1370px] px-6 py-16 md:px-10 lg:py-20">
+            <div className="mx-auto max-w-[1370px] px-6 pt-16 pb-5 md:pb-0 md:px-10 lg:pt-20">
                 <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
                     {/* BRAND */}
                     <div>
@@ -290,6 +290,32 @@ export default function Footer() {
                             Terms & Conditions
                         </Link>
                     </div>
+                </div>
+            </div>
+
+            {/* ANIMATED WORLD TRAVEL SCENE */}
+            <div className="footer-travel-scene">
+                <div className="footer-world-track">
+                    <img
+                        src="/images/footer-world.png"
+                        alt=""
+                        className="footer-world-image"
+                    />
+
+                    <img
+                        src="/images/footer-world.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="footer-world-image"
+                    />
+                </div>
+
+                <div className="footer-flying-plane">
+                    <img
+                        src="/images/plane.png"
+                        alt="Airplane"
+                        className="footer-plane-image h-46 w-46"
+                    />
                 </div>
             </div>
         </footer>

@@ -15,8 +15,13 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import Navbar from "@/components/Navbar"; 
+import Navbar from "@/components/Navbar";
 import PostsCarousel from "@/components/home/PostsCarousel";
+import { AnimatedStat } from "@/components/home/HomeAnimations";
+import { HeroTypingHeading } from "@/components/home/HomeAnimations";
+import Testimonials from "@/components/home/Testimonials";
+import ProcessJourney from "@/components/JourneyProcess";
+import JourneyProcess from "@/components/JourneyProcess";
 
 const destinations = [
   {
@@ -103,13 +108,7 @@ export default function Home() {
               YOUR JOURNEY. YOUR FUTURE. YOUR WORLD.
             </div>
 
-            <h1 className="font-heading text-4xl font-extrabold leading-[1.13] tracking-tight sm:text-5xl lg:text-6xl">
-              Your Global
-              <br />
-              Dreams Begin
-              <br />
-              <span className="text-[#86C33C]">Right Here.</span>
-            </h1>
+            <HeroTypingHeading />
 
             <p className="mt-6 max-w-lg text-base leading-8 text-slate-300 sm:text-lg">
               Take the next step towards your international education goals
@@ -121,10 +120,10 @@ export default function Home() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold text-navy transition-colors duration-300 hover:bg-green-50 hover:!text-navy"
+                className="journey-welcome inline-flex items-center gap-2 rounded-lg bg-[#86C33C] px-6 py-4 font-bold text-navy transition-colors duration-300 hover:bg-green-50 hover:!text-navy"
               >
                 Start Your Journey
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="journey-arrow" />
               </Link>
 
               <Link
@@ -195,9 +194,7 @@ export default function Home() {
         <div className="container-width pt-3 grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {stats.map((stat) => (
             <div key={stat.label} className="px-5 py-7 text-center">
-              <p className="font-heading text-3xl font-extrabold text-navy">
-                {stat.value}
-              </p>
+              <AnimatedStat value={stat.value} />
               <p className="mt-2 text-sm text-muted">{stat.label}</p>
             </div>
           ))}
@@ -263,6 +260,10 @@ export default function Home() {
 
       {/* POSTS CAROUSEL */}
       <PostsCarousel />
+
+      <Testimonials />
+
+      <JourneyProcess />
 
       {/* SERVICES */}
       <section className="section-padding bg-surface">

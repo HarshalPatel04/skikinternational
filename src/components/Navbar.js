@@ -30,7 +30,7 @@ export default function Navbar() {
 
                 <Link href="/" className="flex shrink-0 items-center gap-3">
                     <img
-                        src="/logo.avif"
+                        src="/logo.png"
                         alt="Skik International"
                         className="h-12 w-12 rounded-xl object-contain"
                     />

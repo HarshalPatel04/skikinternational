@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import PageTransition from "@/components/PageTransition";
 
 export default function SiteLayout({ children }) {
     const pathname = usePathname();
@@ -16,8 +17,9 @@ export default function SiteLayout({ children }) {
 
     return (
         <>
+            <PageTransition />
             <Navbar />
-            <main>{children}</main>
+            <main id="site-content">{children}</main>
             <Footer />
 
             {/* FLOATING WHATSAPP */}
