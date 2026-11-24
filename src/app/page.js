@@ -101,7 +101,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-navy text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(60,103,158,0.35),transparent_55%)]" />
 
-        <div className="container-width relative grid min-h-[620px] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+        <div className="container-width relative grid min-h-[620px] items-center gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
           <div className="max-w-2xl">
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-green-50/5 px-4 py-2 text-xs font-semibold tracking-wide text-blue-100">
               <span className="h-2 w-2 rounded-full bg-[#86C33C]" />
@@ -146,19 +146,20 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[540px]">
-            <div className="absolute -inset-5 rounded-[35px] bg-brand-blue/20 blur-3xl" />
+          <div className="relative mx-auto w-full min-w-0 md:pl-15">
+            <div className="absolute -inset-5 rounded-[35px] bg-brand-blue/40 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-green-50/5 p-2">
-              <div className="relative h-[370px] overflow-hidden rounded-xl sm:h-[450px]">
+            <div className="relative w-full overflow-visible rounded-2xl border border-white/15 bg-green-50/5 p-2">
+              <div className="relative h-[320px] w-full overflow-hidden rounded-xl sm:h-[520px] lg:h-[360px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=90" alt="University students on campus"
+                  src="/home.png"
+                  alt="International students studying abroad"
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#86C33C]">
@@ -174,13 +175,35 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute -bottom-12 -left-3 flex items-center gap-3 rounded-xl border border-border bg-green-50 p-4 text-navy shadow-xl sm:-left-8">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-surface">
-                <GraduationCap size={24} className="text-brand-blue" />
-              </div>
-              <div>
-                <p className="font-heading text-lg font-extrabold">Since 2016</p>
-                <p className="text-xs text-muted">Supporting global ambitions</p>
+            <div className="absolute -bottom-10 -left-3 z-10 sm:-left-8">
+              <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-green-50 px-3 py-3 shadow-[0_15px_40px_rgba(0,0,0,0.18)]">
+
+                {/* Decorative accent */}
+                <div className="absolute right-0 top-0 h-20 w-20 translate-x-7 -translate-y-7 rounded-full bg-[#86C33C]/15" />
+
+                <div className="relative flex items-center gap-4">
+
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy shadow-md">
+                    <GraduationCap
+                      size={25}
+                      className="text-[#86C33C]"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="font-heading text-md font-extrabold leading-tight text-navy">
+                      Since 2016
+                    </p>
+
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="h-[3px] w-2 rounded-full bg-[#86C33C]" />
+                      <p className="text-xs font-medium text-slate-500">
+                        Supporting global ambitions
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
