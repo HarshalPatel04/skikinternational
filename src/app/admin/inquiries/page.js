@@ -315,11 +315,17 @@ export default function InquiriesPage() {
 
                                 {/* CONTACT DETAILS */}
                                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                                    <div className="flex items-center gap-2 text-sm text-slate-600">
+
+                                    <a
+                                        href={`https://wa.me/${String(item.phone || "").replace(/\D/g, "")}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="flex items-center gap-2 text-sm text-slate-600"
+                                    >
                                         <Phone size={16} className="shrink-0 text-slate-400" />
                                         <h1>Phone :</h1>
                                         {item.phone || "No phone provided"}
-                                    </div>
+                                    </a>
 
                                     <div className="flex items-center gap-2 text-sm text-slate-600">
                                         <Mail size={16} className="shrink-0 text-slate-400" />
@@ -345,20 +351,22 @@ export default function InquiriesPage() {
                                 </div>
 
                                 {/* MESSAGE */}
-                                {item.message && (
-                                    <div className="mt-5 rounded-xl border border-slate-200/70 bg-white/70 p-4">
-                                        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                                            <MessageSquare size={15} />
-                                            Message
+                                {
+                                    item.message && (
+                                        <div className="mt-5 rounded-xl border border-slate-200/70 bg-white/70 p-4">
+                                            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                                                <MessageSquare size={15} />
+                                                Message
+                                            </div>
+                                            <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-slate-700">
+                                                {item.message}
+                                            </p>
                                         </div>
-                                        <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-slate-700">
-                                            {item.message}
-                                        </p>
-                                    </div>
-                                )}
+                                    )
+                                }
 
                                 {/* ADMIN NOTES */}
-                                <div className="mt-5 border-t border-slate-200/70 pt-5">
+                                < div className="mt-5 border-t border-slate-200/70 pt-5" >
                                     <label
                                         htmlFor={`note-${item.id}`}
                                         className="text-sm font-semibold text-[#101d36]"
@@ -409,12 +417,14 @@ export default function InquiriesPage() {
                     )}
                 </div>
 
-                {!loading && filteredInquiries.length > 0 && (
-                    <p className="mt-5 text-center text-xs text-slate-400">
-                        Showing {filteredInquiries.length} of {inquiries.length} inquiries
-                    </p>
-                )}
-            </div>
-        </main>
+                {
+                    !loading && filteredInquiries.length > 0 && (
+                        <p className="mt-5 text-center text-xs text-slate-400">
+                            Showing {filteredInquiries.length} of {inquiries.length} inquiries
+                        </p>
+                    )
+                }
+            </div >
+        </main >
     );
 }
